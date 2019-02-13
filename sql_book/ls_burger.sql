@@ -1,9 +1,10 @@
 CREATE TABLE orders (
-    id integer,
-    customer_name text,
-    burger text,
-    side text,
-    drink text
+    id serial,
+    customer_name varchar(100) NOT NULL,
+    burger varchar(50),
+    side varchar(50),
+    drink varchar(50),
+    order_total decimal(4,2) NOT NULL
 );
 
 INSERT INTO orders VALUES (1, 'Todd Perez', 'LS Burger', 'Fries', 'Lemonade');
