@@ -21,3 +21,10 @@ CREATE TABLE animals (
   max_age_years int,
   conservation_status varchar(2)
 );
+
+ALTER TABLE famous_people RENAME TO celebrities;
+
+ALTER TABLE celebrities RENAME COLUMN name TO first_name;
+ALTER TABLE celebrities ALTER COLUMN first_name TYPE varchar(80);
+
+ALTER TABLE celebrities ADD COLUMN last_name varchar(100) NOT NULL;

@@ -18,3 +18,9 @@ ALTER TABLE all_users ALTER COLUMN id DROP DEFAULT;
 
 -- alter table test alter column id drop not null;
 
+-- add column
+ALTER TABLE all_users
+  ADD COLUMN last_login timestamp NOT NULL DEFAULT NOW();
+
+-- delete column
+ALTER TABLE all_users DROP COLUMN enabled;
