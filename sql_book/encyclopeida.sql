@@ -28,3 +28,12 @@ ALTER TABLE celebrities RENAME COLUMN name TO first_name;
 ALTER TABLE celebrities ALTER COLUMN first_name TYPE varchar(80);
 
 ALTER TABLE celebrities ADD COLUMN last_name varchar(100) NOT NULL;
+
+ALTER TABLE celebrities ALTER COlUMN date_of_birth TYPE date
+  USING date_of_birth::date,
+  ALTER COLUMN date_of_birth SET NOT NULL;
+
+ALTER TABLE animals ALTER COLUMN max_weight_kg TYPE decimal(10,4);
+
+ALTER TABLE animals ADD CONSTRAINT unique_binomial_name
+UNIQUE (binomial_name);
