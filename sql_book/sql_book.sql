@@ -37,3 +37,5 @@ INSERT INTO users (full_name, enabled)
 
 INSERT INTO users (full_name)
   VALUES ('Jane Smith'), ('Harry Potter');
+
+ALTER TABLE users ADD CHECK (full_name <> '');
