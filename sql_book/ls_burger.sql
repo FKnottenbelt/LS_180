@@ -13,3 +13,12 @@ INSERT INTO orders VALUES (3, 'Robin Barnes', 'LS Burger', 'Onion Rings', 'Vanil
 INSERT INTO orders VALUES (4, 'Joyce Silva', 'LS Double Deluxe Burger', 'Fries', 'Chocolate Shake');
 INSERT INTO orders VALUES (5, 'Joyce Silva', 'LS Chicken Burger', 'Onion Rings', 'Cola');
 
+ALTER TABLE orders ADD COLUMN customer_email varchar(50);
+ALTER TABLE orders ADD COLUMN customer_loyalty_points INT DEFAULT 0;
+
+ALTER TABLE orders
+  ADD COLUMN burger_cost decimal(4,2) DEFAULT 0,
+  ADD COLUMN side_cost decimal(4,2) DEFAULT 0,
+  ADD COLUMN drink_cost decimal(4,2) DEFAULT 0;
+
+ALTER TABLE orders drop COLUMN order_total;

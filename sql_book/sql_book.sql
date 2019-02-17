@@ -24,3 +24,16 @@ ALTER TABLE all_users
 
 -- delete column
 ALTER TABLE all_users DROP COLUMN enabled;
+
+CREATE TABLE users (
+    id serial UNIQUE NOT NULL,
+    full_name character varying(25) NOT NULL,
+    enabled boolean DEFAULT true,
+    last_login timestamp without time zone DEFAULT now()
+);
+
+INSERT INTO users (full_name, enabled)
+  VALUES ('John Smith', false);
+
+INSERT INTO users (full_name)
+  VALUES ('Jane Smith'), ('Harry Potter');
