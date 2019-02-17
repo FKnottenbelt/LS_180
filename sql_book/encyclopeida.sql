@@ -37,3 +37,41 @@ ALTER TABLE animals ALTER COLUMN max_weight_kg TYPE decimal(10,4);
 
 ALTER TABLE animals ADD CONSTRAINT unique_binomial_name
 UNIQUE (binomial_name);
+
+INSERT INTO countries (name, Capital, Population)
+  VALUES ('France', 'Paris' , 67158000);
+
+INSERT INTO countries (name, capital, population)
+  VALUES ('USA', 'Washington D.C.', 325365189),
+        ('Germany', 'Berlin', 82349400),
+        ('Japan', 'Tokyo', 126672000);
+
+INSERT INTO celebrities (first_name, last_name, occupation, date_of_birth)
+  VALUES ('Bruce', 'Springsteen', 'singer-songwriter', '1949-09-23');
+
+INSERT INTO celebrities (first_name, last_name, occupation, date_of_birth)
+  VALUES ('Scarlett', 'Johansson', 'actress', '1984-11-22');
+
+INSERT INTO celebrities (first_name, last_name, occupation, date_of_birth,
+  deceased)
+  VALUES ('Frank', 'Sinatra', 'Singer, Actor', '1915-12-12', true),
+  ('Tom', 'Cruise', 'Actor', '1962-07-03', false);
+
+ALTER TABLE celebrities ALTER COLUMN last_name DROP NOT NULL;
+
+INSERT INTO celebrities (first_name, occupation, date_of_birth, deceased)
+  VALUES ('Madonna', 'Singer, Actress', '1958-08-16', false),
+        ('Prince', 'Singer, Songwriter, Musician, Actor', '1958-06-07', true);
+
+INSERT INTO celebrities (first_name, last_name, occupation, date_of_birth, deceased)
+ VALUES ('Elvis', 'Presley', 'Singer, Musician, Actor', '1935-08-01', NULL);
+
+ALTER TABLE animals
+  DROP CONSTRAINT unique_binomial_name;
+
+INSERT INTO animals (name, binomial_name, max_weight_kg, max_age_years, conservation_status)
+ VALUES ('Dove', 'Columbidae Columbiformes', 2, 15, 'LC'),
+        ('Golden Eagle', 'Aquila Chrysaetos', 6.35, 24, 'LC'),
+        ('Peregrine Falcon', 'Falco Peregrinus', 1.5, 15, 'LC'),
+        ('Pigeon', 'Columbidae Columbiformes', 2, 15, 'LC'),
+        ('Kakapo', 'Strigops habroptila', 4, 60,'CR');
