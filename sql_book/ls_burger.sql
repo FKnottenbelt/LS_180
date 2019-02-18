@@ -28,3 +28,15 @@ INSERT INTO orders (customer_name, customer_email, customer_loyalty_points, burg
          ('Natasha O''Shea', 'natasha@osheafamily.com', 18, 'LS Cheeseburger', 'Fries', NULL, 3.50, 0.99, DEFAULT),
          ('Natasha O''Shea', 'natasha@osheafamily.com', 42, 'LS Double Deluxe Burger', 'Onion Rings', 'Chocolate Shake', 6.00, 1.50, 2.00),
          ('Aaron Muller', NULL, 10, 'LS Burger', NULL, NULL, 3.00, DEFAULT, DEFAULT);
+
+-- select query exercises
+select burger from orders where burger_cost < 5.00 order by burger_cost;
+select customer_name, customer_email, customer_loyalty_points
+ from orders where customer_loyalty_points >= 20
+ order by customer_loyalty_points desc;
+select burger from orders where customer_name = 'Natasha O''Shea';
+select customer_name from orders where drink is null;
+select burger, side, drink from orders
+  where side <> 'Fries' or side is null;
+select burger, side, drink from orders
+  where side is not null and drink is not null;

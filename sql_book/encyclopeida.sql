@@ -75,3 +75,21 @@ INSERT INTO animals (name, binomial_name, max_weight_kg, max_age_years, conserva
         ('Peregrine Falcon', 'Falco Peregrinus', 1.5, 15, 'LC'),
         ('Pigeon', 'Columbidae Columbiformes', 2, 15, 'LC'),
         ('Kakapo', 'Strigops habroptila', 4, 60,'CR');
+
+-- Exercises select queries
+select population from countries where name = 'USA';
+select population, capital from countries;
+select name from countries order by name;
+select name, capital from countries order by population;
+select name, capital from countries order by population desc;
+select name, binomial_name, max_weight_kg, max_age_years from animals
+  order by max_age_years, max_weight_kg, name DESC;
+select name from countries where population > 70000000;
+select name from countries where population between 70000000 and 200000000;
+select first_name, last_name from celebrities where deceased = false
+  OR deceased IS NULL;
+select first_name, last_name from celebrities
+  where occupation like '%Singer%';
+select first_name, last_name from celebrities where occupation like '%Act%';
+select first_name, last_name from celebrities
+  where occupation like '%Act%' and occupation like '%Singer%';
