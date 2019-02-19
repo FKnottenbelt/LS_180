@@ -40,6 +40,11 @@ INSERT INTO users (full_name)
 
 ALTER TABLE users ADD CHECK (full_name <> '');
 
-
 INSERT INTO users (id, full_name) VALUES (4, 'Harry Potter');
 INSERT INTO users (id, full_name) VALUES (5, 'Jane Smith');
+
+UPDATE users SET enabled = false;
+UPDATE users SET enabled = true
+  WHERE full_name = 'Harry Potter' OR full_name = 'Jane Smith';
+UPDATE users SET full_name='Alice Walker' WHERE id=2;
+DELETE FROM users WHERE full_name='Harry Potter' AND id > 3;
