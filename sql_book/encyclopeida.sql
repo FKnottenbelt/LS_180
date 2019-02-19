@@ -108,3 +108,20 @@ select avg(max_weight_kg) from animals;
 select count(id) from countries;
 select distinct conservation_status, count(name)
   from animals group by conservation_status;
+
+-- update and delete exercises
+Alter table animals add column class varchar(100);
+update animals set class = 'Aves';
+Alter table animals
+  add column phylum varchar(100),
+  add column kingdom varchar(100);
+update animals set phylum = 'Chordata',
+                   kingdom = 'Animalia';
+alter table countries add column continent varchar(50);
+
+update countries
+   set continent = 'Europe' where name = 'France' or name = 'Germany';
+update countries
+   set continent = 'Asia' where name = 'Japan';
+update countries
+   set continent = 'North America' where name = 'USA';
