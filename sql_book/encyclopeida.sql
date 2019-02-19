@@ -93,3 +93,18 @@ select first_name, last_name from celebrities
 select first_name, last_name from celebrities where occupation like '%Act%';
 select first_name, last_name from celebrities
   where occupation like '%Act%' and occupation like '%Singer%';
+
+-- Exercises 'more on select' queries
+select * from countries limit 1;
+select name from countries order by population desc limit 1;
+select name from countries order by population desc limit 1 offset 1;
+select distinct binomial_name from animals;
+select length(binomial_name) from animals
+  order by length(binomial_name) DESC limit 1;
+select first_name from celebrities
+  where date_part('year',date_of_birth) = '1958' ;
+select max(max_age_years) from animals;
+select avg(max_weight_kg) from animals;
+select count(id) from countries;
+select distinct conservation_status, count(name)
+  from animals group by conservation_status;

@@ -40,3 +40,10 @@ select burger, side, drink from orders
   where side <> 'Fries' or side is null;
 select burger, side, drink from orders
   where side is not null and drink is not null;
+
+-- Exercises 'more on select' queries
+select avg(burger_cost) from orders where side = 'Fries';
+select min(side_cost) from orders where side is not null;
+select side, count(id) from orders
+  where side = 'Fries' or side = 'Onion Rings'
+  group by side;
