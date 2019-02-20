@@ -47,3 +47,12 @@ select min(side_cost) from orders where side is not null;
 select side, count(id) from orders
   where side = 'Fries' or side = 'Onion Rings'
   group by side;
+
+-- update and delete exercises
+update orders set drink = 'Lemonade'
+  where customer_name = 'James Bergman';
+update orders set side = 'Fries',
+   side_cost = '0.99',
+   customer_loyalty_points = 3
+   where id = 4;
+update orders set side_cost = '1.20' where side = 'Fries';

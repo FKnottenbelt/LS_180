@@ -125,3 +125,11 @@ update countries
    set continent = 'Asia' where name = 'Japan';
 update countries
    set continent = 'North America' where name = 'USA';
+
+update celebrities set deceased = true where first_name = 'Elvis';
+alter table celebrities alter column deceased set not null;
+delete from celebrities where first_name = 'Tom' and last_name = 'Cruise';
+Alter table celebrities rename to singers;
+update singers set occupation = 'Singer-songwriter' where id = 1;
+delete from singers where occupation not like '%Singer%';
+delete from countries;
