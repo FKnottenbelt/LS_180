@@ -48,3 +48,20 @@ UPDATE users SET enabled = true
   WHERE full_name = 'Harry Potter' OR full_name = 'Jane Smith';
 UPDATE users SET full_name='Alice Walker' WHERE id=2;
 DELETE FROM users WHERE full_name='Harry Potter' AND id > 3;
+
+-- one on one relationships
+ALTER TABLE users ADD PRIMARY KEY (id);
+
+CREATE TABLE addresses (
+  user_id int, -- Both a primary and foreign key
+  street varchar(30) NOT NULL,
+  city varchar(30) NOT NULL,
+  state varchar(30) NOT NULL,
+  PRIMARY KEY (user_id),
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+);
+
+INSERT INTO addresses (user_id, street, city, state) VALUES
+  (1, '1 Market Street', 'San Francisco', 'CA'),
+  (2, '2 Elm Street', 'San Francisco', 'CA'),
+  (3, '3 Main Street', 'Boston', 'MA');

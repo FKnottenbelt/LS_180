@@ -56,3 +56,5 @@ update orders set side = 'Fries',
    customer_loyalty_points = 3
    where id = 4;
 update orders set side_cost = '1.20' where side = 'Fries';
+
+
