@@ -57,4 +57,23 @@ update orders set side = 'Fries',
    where id = 4;
 update orders set side_cost = '1.20' where side = 'Fries';
 
+-- table_relationships exercises
+create table customers(
+  id serial PRIMARY KEY UNIQUE,
+  customer_name varchar(100) NOT NULL
+);
 
+create table email_addresses(
+  customer_id INT PRIMARY KEY UNIQUE,
+  customer_email varchar(50),
+  FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
+);
+
+INSERT INTO customers (customer_name)
+ VALUES ('James Bergman'),
+        ('Natasha O''Shea'),
+        ('Aaron Muller');
+
+INSERT INTO email_addresses (customer_id, customer_email)
+  VALUES (1, 'james1998@email.com'),
+         (2, 'natasha@osheafamily.com');
