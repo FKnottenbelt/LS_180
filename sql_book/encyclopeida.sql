@@ -133,3 +133,32 @@ Alter table celebrities rename to singers;
 update singers set occupation = 'Singer-songwriter' where id = 1;
 delete from singers where occupation not like '%Singer%';
 delete from countries;
+
+-- table_relationships exercises
+create table continents (
+  id serial,
+  continent_name varchar(50),
+  PRIMARY KEY (id)
+);
+
+alter table countries drop column continent;
+
+alter table countries add column continent_id INT;
+
+alter table countries add foreign key (continent_id)
+  references continents (id);
+
+INSERT INTO continents (continent_name) VALUES
+  ('Africa'),
+  ('Asia'),
+  ('Europe'),
+  ('North America'),
+  ('South America');
+
+INSERT INTO countries (name, capital, population, continent_id)
+  VALUES  ('Brazil', 'Brasilia', 208385000, 5),
+          ('Egypt', 'Cairo', 96308900, 1),
+          ('France', 'Paris', 67158000, 3),
+          ('Germany', 'Berlin', 82349400, 3),
+          ('Japan', 'Tokyo', 126672000, 2),
+          ('USA', 'Washington D.C.', 325365189, 4);
