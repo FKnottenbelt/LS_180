@@ -77,3 +77,66 @@ INSERT INTO customers (customer_name)
 INSERT INTO email_addresses (customer_id, customer_email)
   VALUES (1, 'james1998@email.com'),
          (2, 'natasha@osheafamily.com');
+
+create table products(
+  id serial PRIMARY KEY UNIQUE,
+  product_name varchar(50) not null,
+  product_cost decimal(4,2) DEFAULT 0,
+  product_type varchar(20),
+  product_loyalty_points INT DEFAULT 0
+);
+
+INSERT INTO products (product_name, product_cost, product_type, product_loyalty_points)
+ VALUES ('LS Burger', 3.00, 'Burger', 10 ),
+        ('LS Cheeseburger', 3.50, 'Burger', 15 ),
+        ('LS Chicken Burger', 4.50, 'Burger', 20 ),
+        ('LS Double Deluxe Burger', 6.00, 'Burger', 30 ),
+        ('Fries', 1.20, 'Side', 3 ),
+        ('Onion Rings', 1.50, 'Side', 5 ),
+        ('Cola', 1.50, 'Drink', 5 ),
+        ('Lemonade', 1.50, 'Drink', 5 ),
+        ('Vanilla Shake', 2.00, 'Drink', 7 ),
+        ('Chocolate Shake', 2.00, 'Drink', 7 ),
+        ('Strawberry Shake', 2.00, 'Drink', 7);
+
+--
+DROP TABLE orders;
+
+CREATE TABLE orders (
+  id serial PRIMARY KEY,
+  customer_id integer,
+  order_status varchar(20),
+  FOREIGN KEY (customer_id) REFERENCES customers (id) ON DELETE CASCADE
+ );
+
+create table order_items(
+  id serial PRIMARY KEY UNIQUE,
+  order_id INT ,
+  product_id INT,
+  FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+  FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
+);
+
+INSERT INTO orders (customer_id, order_status)
+  VALUES (1, 'In Progress'),
+         (2, 'Placed'),
+         (2, 'Complete'),
+         (3, 'Placed');
+
+INSERT INTO order_items (order_id, product_id)
+  VALUES (1, 3),
+         (1, 5),
+         (1, 6),
+         (1, 8),
+         (2, 2),
+         (2, 5),
+         (2, 7),
+         (3, 4),
+         (3, 2),
+         (3, 5),
+         (3, 5),
+         (3, 6),
+         (3, 10),
+         (3, 9),
+         (4, 1),
+         (4, 5);
