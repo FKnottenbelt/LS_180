@@ -194,3 +194,32 @@ VALUES ('Born to Run', '1975-08-25', 'Rock and roll', 'Columbia', 1),
 select a.album_name, a.released, a.genre, a.label, s.first_name, s.last_name
   from albums a
   join singers s ON a.singer_id = s.id ;
+
+-- join exercises
+select c.name, cont.continent_name
+  from countries c
+  join continents cont on (c.continent_id = cont.id);
+
+select c.name, c.capital
+  from countries c
+  join continents cont on (c.continent_id = cont.id)
+  where cont.continent_name = 'Europe';
+
+select distinct s.first_name from singers s
+  join albums a on s.id = a.singer_id
+  where a.label = 'Warner Bros';
+
+select s.first_name, s.last_name,
+       a.album_name, a.released
+  from singers s
+  join albums a on s.id = a.singer_id
+  where (a.released >= '1980-01-01' AND
+        a.released <= '1989-12-31')
+    AND s.deceased = false
+    order by s.date_of_birth desc;
+
+select s.first_name, s.last_name
+  from singers s
+  left join albums a on s.id = a.singer_id
+  where a.id is null;
+

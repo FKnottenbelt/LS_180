@@ -120,3 +120,37 @@ INSERT INTO checkouts (id, user_id, book_id, checkout_date, return_date) VALUES
   (2, 1, 2, '2017-10-05 16:22:44.593188-07', '2017-10-13 13:0:12.673382-05'),
   (3, 2, 2, '2017-10-15 11:11:24.994973-07', '2017-10-22 17:47:10.407569-07'),
   (4, 5, 3, '2017-10-15 09:27:07.215217-07', NULL);
+
+-- join examples
+SELECT users.*, addresses.*
+  FROM users
+  INNER JOIN addresses
+  ON (users.id = addresses.user_id);
+
+SELECT users.*, addresses.*
+  FROM users
+  LEFT JOIN addresses
+  ON (users.id = addresses.user_id);
+
+SELECT reviews.book_id, reviews.content,
+       reviews.rating, reviews.published_date,
+       books.id, books.title, books.author
+FROM reviews RIGHT JOIN books ON (reviews.book_id = books.id);
+
+SELECT * FROM users CROSS JOIN addresses;
+
+SELECT users.full_name, books.title, checkouts.checkout_date
+  FROM users
+  INNER JOIN checkouts ON (users.id = checkouts.user_id)
+  INNER JOIN books ON (books.id = checkouts.book_id);
+
+SELECT u.full_name, b.title, c.checkout_date
+  FROM users AS u
+  INNER JOIN checkouts AS c ON (u.id = c.user_id)
+  INNER JOIN books AS b ON (b.id = c.book_id);
+
+SELECT count(id) AS "Number of Books Checked Out"
+  FROM checkouts;
+
+SELECT u.full_name FROM users u
+ WHERE u.id NOT IN (SELECT c.user_id FROM checkouts c);
