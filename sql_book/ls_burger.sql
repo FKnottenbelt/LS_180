@@ -140,3 +140,23 @@ INSERT INTO order_items (order_id, product_id)
          (3, 9),
          (4, 1),
          (4, 5);
+
+-- join exercises
+select o.*, p.*
+  from orders o
+  join order_items oi on o.id = oi.order_id
+  join products p on p.id = oi.product_id;
+
+select  DISTINCT c.customer_name AS "Customers who like Fries"
+  from orders
+  join customers c on c.id = orders.customer_id
+  join order_items on order_items.order_id = orders.id
+  join products on products.id = order_items.product_id
+  where products.product_name = 'Fries';
+
+SELECT sum(products.product_cost)
+  from orders
+  join customers c on c.id = orders.customer_id
+  join order_items on order_items.order_id = orders.id
+  join products on products.id = order_items.product_id
+  where c.customer_name = 'Natasha O''Shea';

@@ -223,3 +223,7 @@ select s.first_name, s.last_name
   left join albums a on s.id = a.singer_id
   where a.id is null;
 
+select first_name, last_name
+  from singers
+  where id not in (select singer_id from albums);
+
