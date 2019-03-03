@@ -53,3 +53,17 @@ INSERT INTO temperatures VALUES ('2016-03-07', 29, 32);
 INSERT INTO temperatures VALUES ('2016-03-08', 23, 31);
 INSERT INTO temperatures VALUES ('2016-03-09', 17, 28);
 
+ALTER TABLE temperatures ADD COLUMN rainfall integer DEFAULT 0;
+
+UPDATE temperatures
+   SET rainfall = (high + low) / 2 - 35
+ WHERE (high + low) / 2 > 35;
+
+ALTER TABLE temperatures
+ALTER COLUMN rainfall TYPE numeric(6,3);
+UPDATE temperatures SET rainfall = rainfall * 0.039;
+
+ALTER TABLE temperatures RENAME TO weather;
+
+\d weather
+
