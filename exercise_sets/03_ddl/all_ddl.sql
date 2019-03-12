@@ -99,3 +99,27 @@ ADD CHECK (mass > 0.0);
 
 ALTER TABLE planets
 ALTER COLUMN designation SET NOT NULL;
+
+-- 08
+
+ALTER TABLE planets ADD COLUMN semi_major_axis numeric NOT NULL;
+
+-- Further Exploration
+-- ALTER TABLE planets
+-- DROP COLUMN semi_major_axis;
+
+-- DELETE FROM stars;
+-- INSERT INTO stars (name, distance, spectral_type, companions)
+--           VALUES ('Alpha Centauri B', 4.37, 'K', 3);
+-- INSERT INTO stars (name, distance, spectral_type, companions)
+--           VALUES ('Epsilon Eridani', 10.5, 'K', 0);
+
+-- INSERT INTO planets (designation, mass, star_id)
+--           VALUES ('b', 0.0036, 1); -- check star_id; see note below
+-- INSERT INTO planets (designation, mass, star_id)
+--           VALUES ('c', 0.1, 2); -- check star_id; see note below
+
+-- ALTER TABLE planets
+-- ADD COLUMN semi_major_axis numeric NOT NULL;
+
+-- 09
