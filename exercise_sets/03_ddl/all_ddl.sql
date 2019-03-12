@@ -130,3 +130,7 @@ CREATE TABLE moons (
   mass numeric CHECK (mass > 0.0),
   planet_id integer NOT NULL REFERENCES planets (id)
 );
+
+-- 10
+\c postgres
+DROP DATABASE extrasolar;
