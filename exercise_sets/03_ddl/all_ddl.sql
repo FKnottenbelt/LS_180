@@ -91,3 +91,11 @@ CREATE TYPE spectral_type_enum AS ENUM('O', 'B', 'A', 'F', 'G', 'K', 'M');
 ALTER TABLE stars
 ALTER COLUMN spectral_type TYPE spectral_type_enum
                            USING spectral_type::spectral_type_enum;
+-- 07
+ALTER TABLE planets
+ALTER COLUMN mass TYPE numeric,
+ALTER COLUMN mass SET NOT NULL,
+ADD CHECK (mass > 0.0);
+
+ALTER TABLE planets
+ALTER COLUMN designation SET NOT NULL;
