@@ -42,3 +42,9 @@ INNER JOIN parts ON parts.device_id = devices.id;
 
 -- 04
 SELECT * FROM parts WHERE part_number::text LIKE '3%';
+
+-- 05
+SELECT devices.name, COUNT(parts.part_number)
+FROM devices
+INNER JOIN parts on parts.device_id = devices.id
+GROUP BY devices.name;
