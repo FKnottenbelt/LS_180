@@ -56,3 +56,12 @@ FROM devices
 JOIN parts ON devices.id = parts.device_id
 GROUP BY devices.name
 ORDER BY devices.name;
+
+-- 07
+SELECT part_number, device_id
+FROM parts
+WHERE device_id IS NOT NULL;
+
+SELECT part_number, device_id
+FROM parts
+WHERE device_id IS NULL;
