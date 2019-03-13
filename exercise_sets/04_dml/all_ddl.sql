@@ -65,3 +65,9 @@ WHERE device_id IS NOT NULL;
 SELECT part_number, device_id
 FROM parts
 WHERE device_id IS NULL;
+
+-- 08
+SELECT name AS oldest_device
+FROM devices
+ORDER BY created_at
+LIMIT 1;
