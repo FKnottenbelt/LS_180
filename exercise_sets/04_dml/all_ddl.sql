@@ -80,3 +80,9 @@ WHERE id IN (30, 31);
 -- UPDATE parts SET device_id = 2
 -- WHERE part_number = (SELECT min(part_number) FROM parts);
 
+-- 10
+DELETE FROM parts
+WHERE device_id = 1;
+
+DELETE FROM devices
+WHERE name = 'Accelerometer';
