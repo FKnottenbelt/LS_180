@@ -34,3 +34,8 @@ INSERT INTO parts (part_number) VALUES (50);
 INSERT INTO parts (part_number) VALUES (54);
 INSERT INTO parts (part_number) VALUES (58);
 
+-- 03
+SELECT devices.name,
+       parts.part_number
+FROM devices
+INNER JOIN parts ON parts.device_id = devices.id;
