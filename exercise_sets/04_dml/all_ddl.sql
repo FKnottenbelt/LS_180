@@ -71,3 +71,12 @@ SELECT name AS oldest_device
 FROM devices
 ORDER BY created_at
 LIMIT 1;
+
+-- 09
+UPDATE parts SET device_id = 1
+WHERE id IN (30, 31);
+
+-- Further Exploration
+-- UPDATE parts SET device_id = 2
+-- WHERE part_number = (SELECT min(part_number) FROM parts);
+
