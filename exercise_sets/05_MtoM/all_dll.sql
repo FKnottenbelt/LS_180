@@ -81,3 +81,9 @@ SELECT customers.* ,
     FULL JOIN customers_services ON customer_id = customers.id
     FULL JOIN services ON service_id = services.id
   WHERE service_id IS NULL OR customer_id is null;
+
+-- 04
+SELECT description FROM customers_services
+RIGHT OUTER JOIN services
+              ON services.id = service_id
+WHERE service_id IS NULL;
