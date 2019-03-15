@@ -62,3 +62,9 @@ VALUES
   (6, 1), -- Jim Pornot/Unix Hosting
   (6, 6), --           /Dedicated Hosting
   (6, 7); --           /Bulk Email
+
+-- 02
+SELECT DISTINCT customers.*
+FROM customers
+  INNER JOIN customers_services ON customer_id = customers.id;
+
