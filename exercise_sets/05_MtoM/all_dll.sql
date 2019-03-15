@@ -87,3 +87,13 @@ SELECT description FROM customers_services
 RIGHT OUTER JOIN services
               ON services.id = service_id
 WHERE service_id IS NULL;
+
+-- 05
+SELECT c.name,
+       string_agg(s.description, ', ') AS services
+  FROM customers c
+    LEFT OUTER JOIN customers_services cs ON c.id = cs.customer_id
+    LEFT OUTER JOIN services s ON s.id = cs.service_id
+  GROUP BY c.name;
+
+-- Further Exploration
