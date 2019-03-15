@@ -68,3 +68,16 @@ SELECT DISTINCT customers.*
 FROM customers
   INNER JOIN customers_services ON customer_id = customers.id;
 
+-- 03
+SELECT customers.* FROM customers
+LEFT OUTER JOIN customers_services
+             ON customer_id = customers.id
+WHERE service_id IS NULL;
+
+-- Further Exploration
+SELECT customers.* ,
+       services.*
+  FROM customers
+    FULL JOIN customers_services ON customer_id = customers.id
+    FULL JOIN services ON service_id = services.id
+  WHERE service_id IS NULL OR customer_id is null;
