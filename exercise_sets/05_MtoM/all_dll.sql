@@ -97,3 +97,12 @@ SELECT c.name,
   GROUP BY c.name;
 
 -- Further Exploration
+
+-- 06
+SELECT DISTINCT description,
+       COUNT(customer_id)
+  FROM services
+    INNER JOIN customers_services cs ON cs.service_id = services.id
+  GROUP BY description
+    HAVING COUNT(customer_id) >= 3
+  ORDER BY description;
