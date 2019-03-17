@@ -122,3 +122,14 @@ INSERT INTO customers_services (customer_id, service_id)
   VALUES (7, 1),
          (7, 2),
          (7, 3);
+
+-- 09
+SELECT cs.customer_id, s.description, s.price
+  FROM customers_services cs
+    INNER JOIN services s ON cs.service_id = s.id
+  WHERE price > 100;
+
+SELECT SUM(price)
+  FROM customers
+    CROSS JOIN services
+  WHERE price > 100;
