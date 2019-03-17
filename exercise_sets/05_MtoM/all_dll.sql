@@ -111,3 +111,14 @@ SELECT DISTINCT description,
 SELECT sum(s.price) AS gross
   FROM services s
     INNER JOIN customers_services cs ON cs.service_id = s.id;
+
+-- 08
+INSERT INTO customers (name, payment_token)
+  VALUES ('John Doe','EYODHLCN') RETURNING ID;
+
+SELECT id, description FROM services;
+
+INSERT INTO customers_services (customer_id, service_id)
+  VALUES (7, 1),
+         (7, 2),
+         (7, 3);
