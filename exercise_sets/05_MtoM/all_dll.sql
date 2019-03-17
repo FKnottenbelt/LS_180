@@ -106,3 +106,8 @@ SELECT DISTINCT description,
   GROUP BY description
     HAVING COUNT(customer_id) >= 3
   ORDER BY description;
+
+-- 07
+SELECT sum(s.price) AS gross
+  FROM services s
+    INNER JOIN customers_services cs ON cs.service_id = s.id;
