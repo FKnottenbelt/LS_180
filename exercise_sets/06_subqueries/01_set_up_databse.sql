@@ -102,3 +102,44 @@
 -- 24,2, 5, 38.00
 -- 25,6, 5, 40.00
 -- 26,2, 5, 42.00
+
+
+CREATE DATABASE auction;
+
+\c auction
+
+CREATE TABLE bidders(
+  id serial PRIMARY KEY,
+  name text NOT NULL
+);
+
+CREATE TABLE items (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  initial_price DECIMAL(6,2) NOT NULL CHECK(initial_price BETWEEN 0.01 AND 1000.00),
+  sales_price DECIMAL(6,2) CHECK(sales_price BETWEEN 0.01 AND 1000.00)
+);
+
+CREATE TABLE bids (
+  id SERIAL PRIMARY KEY,
+  bidder_id integer NOT NULL REFERENCES bidders(id) ON DELETE CASCADE,
+  item_id integer NOT NULL REFERENCES items(id) ON DELETE CASCADE,
+  amount DECIMAL(6,2) NOT NULL CHECK(amount BETWEEN 0.01 AND 1000.00)
+);
+
+CREATE INDEX bidder_item_id ON bids (bidder_id, item_id);
+
+\copy bidders FROM 'bidders.csv' WITH DELIMITER ',' CSV HEADER;
+\copy items FROM 'items.csv' WITH DELIMITER ',' CSV HEADER;
+\copy bids FROM 'bids.csv' WITH DELIMITER ',' CSV HEADER;
+
+-- notes:
+-- \copy examples:
+-- \copy table from 'table.csv' WITH DELIMITER ',' CSV HEADER;
+-- \copy staging_assets FROM ‘~/Practice_Data/psql_pipe_tally.csv’ 
+--   WITH DELIMITER ‘,’ CSV HEADER;
+
+-- the other way (table to file)
+-- \copy (SELECT * FROM staging_assets WHERE pipe_length <= 10.00) 
+--   TO ‘~/Practice_Data/ten_footers.csv’ WITH DELIMITER ‘,’ CSV HEADER;
+
