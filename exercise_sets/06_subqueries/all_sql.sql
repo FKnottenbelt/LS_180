@@ -27,3 +27,9 @@ CREATE INDEX bidder_item_id ON bids (bidder_id, item_id);
 \copy bidders FROM 'bidders.csv' WITH DELIMITER ',' CSV HEADER;
 \copy items FROM 'items.csv' WITH DELIMITER ',' CSV HEADER;
 \copy bids FROM 'bids.csv' WITH DELIMITER ',' CSV HEADER;
+
+-- 02
+SELECT items.name as "Bid on Items"
+  FROM items
+  WHERE items.id IN
+    (SELECT DISTINCT item_id FROM bids);
