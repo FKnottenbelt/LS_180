@@ -33,3 +33,10 @@ SELECT items.name as "Bid on Items"
   FROM items
   WHERE items.id IN
     (SELECT DISTINCT item_id FROM bids);
+
+-- 03
+
+SELECT items.name AS "Not Bid On"
+  FROM items
+  WHERE items.id NOT IN
+    (SELECT DISTINCT item_id FROM bids);
