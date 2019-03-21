@@ -40,3 +40,13 @@ SELECT items.name AS "Not Bid On"
   FROM items
   WHERE items.id NOT IN
     (SELECT DISTINCT item_id FROM bids);
+
+-- 04
+SELECT name FROM bidders
+WHERE EXISTS (SELECT 1 FROM bids WHERE bids.bidder_id = bidders.id);
+
+-- further exploration
+SELECT bidders.name FROM bidders
+  JOIN bids ON bids.bidder_id = bidders.id
+  GROUP BY bidders.id
+  ORDER BY bidders.id;
