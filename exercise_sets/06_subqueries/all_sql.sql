@@ -64,3 +64,21 @@ SELECT items.name AS "Bids Less Than 100 Dollars"
 SELECT name AS "Bids Less Than 100 Dollars" FROM items
 WHERE 100.00 > ALL
   (SELECT amount FROM bids WHERE item_id = items.id);
+
+-- 06
+SELECT max(total_bids.count) FROM
+  (SELECT COUNT(item_id)
+     FROM bids GROUP by bidder_id) AS total_bids;
+
+-- 07
+SELECT items.name,
+       (SELECT COUNT(item_id) FROM bids
+           WHERE items.id = bids.item_id)
+  FROM items;
+
+-- Further Exploration
+SELECT items.name,
+       count(bids.item_id)
+  FROM items
+  LEFT OUTER JOIN bids ON bids.item_id = items.id
+  GROUP BY items.name;
