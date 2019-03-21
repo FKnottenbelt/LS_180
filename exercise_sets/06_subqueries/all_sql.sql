@@ -50,3 +50,17 @@ SELECT bidders.name FROM bidders
   JOIN bids ON bids.bidder_id = bidders.id
   GROUP BY bidders.id
   ORDER BY bidders.id;
+
+-- 05
+SELECT name AS "Bids Less Than 100 Dollars" FROM items
+WHERE 100.00 > ANY
+  (SELECT amount FROM bids WHERE item_id = items.id);
+
+SELECT items.name AS "Bids Less Than 100 Dollars"
+  FROM items
+  WHERE items.id = ANY
+   (SELECT item_id FROM bids WHERE amount < 100.00);
+
+SELECT name AS "Bids Less Than 100 Dollars" FROM items
+WHERE 100.00 > ALL
+  (SELECT amount FROM bids WHERE item_id = items.id);
