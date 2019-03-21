@@ -82,3 +82,11 @@ SELECT items.name,
   FROM items
   LEFT OUTER JOIN bids ON bids.item_id = items.id
   GROUP BY items.name;
+
+-- 08
+SELECT id FROM items
+  WHERE ROW(items.*) = ROW(items.id,'Painting', 100.00, 250.00 );
+
+SELECT id FROM items
+WHERE ROW('Painting', 100.00, 250.00) =
+  ROW(name, initial_price, sales_price);
