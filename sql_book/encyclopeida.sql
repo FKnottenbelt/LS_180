@@ -22,6 +22,8 @@ CREATE TABLE animals (
   conservation_status varchar(2)
 );
 
+-- alter table exercises
+
 ALTER TABLE famous_people RENAME TO celebrities;
 
 ALTER TABLE celebrities RENAME COLUMN name TO first_name;
