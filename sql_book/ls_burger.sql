@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS ls_burger;
+
+CREATE DATABASE ls_burger;
+
+\c ls_burger
+
 CREATE TABLE orders (
     id serial,
     customer_name varchar(100) NOT NULL,
