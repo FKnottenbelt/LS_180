@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS lesson0307;
+
+CREATE DATABASE lesson0307;
+
+\c lesson0307
+
 \i orders_products1.sql
 
 ALTER TABLE orders
