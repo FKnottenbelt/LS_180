@@ -1,8 +1,8 @@
 -- recreate state of database
 
--- CREATE DATABASE extrasolar;
-
--- \c extrasolar
+DROP DATABASE IF extrasolar;
+CREATE DATABASE extrasolar;
+\c extrasolar
 
 DROP TABLE IF EXISTS planets;
 DROP TABLE IF EXISTS stars;
