@@ -1,5 +1,5 @@
 -- 01
-
+DROP DATABASE IF EXISTS workshop;
 CREATE DATABASE workshop;
 
 \c workshop
