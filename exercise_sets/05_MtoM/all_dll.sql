@@ -1,5 +1,5 @@
 -- 01
-
+DROP DATABASE IF EXISTS billing;
 CREATE DATABASE billing;
 
 \c billing
