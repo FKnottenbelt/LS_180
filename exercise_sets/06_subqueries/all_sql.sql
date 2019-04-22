@@ -1,4 +1,5 @@
 -- 01
+DROP DATABASE IF EXISTS auction;
 CREATE DATABASE auction;
 
 \c auction
